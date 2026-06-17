@@ -1,27 +1,977 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Hamadi Saoudi Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamadi Saoudi — Portfolio</title>
+  <meta name="description" content="Portfolio de Hamadi Saoudi, étudiant en Génie Télécom à l'ENIT, passionné par l'IA, le Machine Learning et la Cybersécurité." />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #0A0F1E;
+      --card:     #111827;
+      --card2:    #1A2035;
+      --cyan:     #00D4FF;
+      --purple:   #7B2FFF;
+      --purple-soft: rgba(123,47,255,0.15);
+      --cyan-soft:   rgba(0,212,255,0.1);
+      --text:     #F0F4FF;
+      --muted:    #8892B0;
+      --border:   rgba(0,212,255,0.12);
+      --border2:  rgba(255,255,255,0.06);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,15,30,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+    }
+    .hero-name .accent { color: var(--cyan); }
+    .hero-role {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--cyan);
+      color: #0A0F1E;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 0.65rem 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      background: transparent;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      border: 0.5px solid var(--cyan);
+      border-radius: 6px;
+      padding: 0.65rem 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--cyan-soft); }
+
+    /* Terminal widget */
+    .terminal {
+      background: #070C1A;
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 13px;
+      min-width: 280px;
+      max-width: 340px;
+    }
+    .terminal-bar { display: flex; gap: 7px; margin-bottom: 1rem; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-r { background: #FF5F57; }
+    .dot-y { background: #FFBD2E; }
+    .dot-g { background: #28CA41; }
+    .t-line { margin-bottom: 0.35rem; }
+    .t-prompt { color: var(--purple); }
+    .t-cmd { color: var(--text); }
+    .t-out { color: #6EE7B7; padding-left: 1rem; }
+    .t-cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--cyan);
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── SECTION BASE ── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-top: 0.5px solid var(--border2);
+    }
+    .section-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 15px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: var(--card2);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--cyan);
+      display: block;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 0.25rem; }
+
+    /* ── SKILLS ── */
+    .skills-categories { display: flex; flex-direction: column; gap: 1.5rem; }
+    .skill-category-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      background: var(--card2);
+      border: 0.5px solid var(--border2);
+      border-radius: 6px;
+      padding: 0.4rem 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .skill-tag.primary {
+      border-color: rgba(0,212,255,0.3);
+      color: var(--cyan);
+      background: var(--cyan-soft);
+    }
+    .skill-tag.secondary {
+      border-color: rgba(123,47,255,0.3);
+      color: #B07BFF;
+      background: var(--purple-soft);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+    .project-card {
+      background: var(--card);
+      border: 0.5px solid var(--border2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .project-card:hover { border-color: rgba(0,212,255,0.35); }
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .project-badge {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-ml   { background: rgba(0,212,255,0.12); color: var(--cyan); }
+    .badge-sec  { background: rgba(123,47,255,0.15); color: #B07BFF; }
+    .badge-net  { background: rgba(110,231,183,0.12); color: #6EE7B7; }
+    .badge-cv   { background: rgba(251,191,36,0.12); color: #FBB724; }
+    .project-why {
+      font-size: 12px;
+      color: var(--purple);
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .project-desc { font-size: 14px; color: var(--muted); margin-bottom: 1rem; }
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .project-tech { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tech-tag {
+      font-size: 11px;
+      background: var(--card2);
+      border: 0.5px solid var(--border2);
+      border-radius: 4px;
+      padding: 2px 8px;
+      color: var(--muted);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .project-links { display: flex; gap: 0.6rem; }
+    .link-btn {
+      font-size: 12px;
+      color: var(--cyan);
+      background: var(--cyan-soft);
+      border: 0.5px solid rgba(0,212,255,0.25);
+      border-radius: 4px;
+      padding: 4px 12px;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: background 0.2s;
+    }
+    .link-btn:hover { background: rgba(0,212,255,0.2); }
+
+    /* ── EDUCATION / EXPERIENCE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item { display: flex; gap: 1.5rem; padding-bottom: 2.5rem; position: relative; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--cyan);
+      flex-shrink: 0;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-dot.purple { border-color: var(--purple); }
+    .timeline-body {}
+    .timeline-date {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-sub {
+      font-size: 13px;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-sub.purple { color: #B07BFF; }
+    .timeline-desc { font-size: 14px; color: var(--muted); }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .cert-card {
+      background: var(--card2);
+      border: 0.5px solid var(--border2);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .cert-icon {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .cert-icon.cyan { background: var(--cyan-soft); }
+    .cert-icon.purple { background: var(--purple-soft); }
+    .cert-icon.green { background: rgba(110,231,183,0.1); }
+    .cert-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .cert-issuer { font-size: 12px; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .contact-intro { color: var(--muted); font-size: 15px; margin-bottom: 1.5rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; }
+    .form-group input,
+    .form-group textarea {
+      background: var(--card);
+      border: 0.5px solid var(--border2);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 0.65rem 0.9rem;
+      outline: none;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: rgba(0,212,255,0.4); }
+    .form-group textarea { min-height: 100px; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--card2);
+      border: 0.5px solid var(--border2);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .contact-link-item:hover { border-color: rgba(0,212,255,0.3); }
+    .contact-link-icon {
+      font-size: 20px;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--cyan-soft);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .contact-link-label { font-size: 11px; color: var(--muted); }
+    .contact-link-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border2);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    footer span { color: var(--cyan); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .hero { grid-template-columns: 1fr; }
+      .terminal { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hamadi Saoudi</h1>
-    <p>Telecom Engineering Student at ENIT</p>
 
-    <h2>About Me</h2>
-    <p>I am interested in Artificial Intelligence, Machine Learning and Cybersecurity.</p>
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav>
+  <a class="nav-logo" href="#">HS_</a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#education">Formation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <h2>Skills</h2>
-    <ul>
-        <li>Python</li>
-        <li>Java</li>
-        <li>C/C++</li>
-        <li>Machine Learning</li>
-    </ul>
 
-    <h2>Projects</h2>
-    <p>Deep Learning for Neurodegenerative Disease Classification</p>
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section style="padding: 0; border: none;">
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">// Disponible pour un stage &amp; alternance</p>
+      <h1 class="hero-name">
+        Hamadi<br>
+        <span class="accent">Saoudi</span>
+      </h1>
+      <p class="hero-role">
+        Étudiant en 3ème année Génie Télécom à l'ENIT · Passionné par
+        l'<strong style="color:var(--cyan)">Intelligence Artificielle</strong>,
+        le <strong style="color:var(--cyan)">Machine Learning</strong>
+        et la <strong style="color:var(--cyan)">Cybersécurité</strong>.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#projects">Voir mes projets</a>
+        <a class="btn-outline" href="cv-hamadi-saoudi.pdf" download>Télécharger CV</a>
+      </div>
+    </div>
 
-    <h2>Contact</h2>
-    <p>Email: your_email@example.com</p>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="t-line"><span class="t-prompt">~$</span> <span class="t-cmd">whoami</span></div>
+      <div class="t-line t-out">Hamadi Saoudi — Télécom &amp; IA</div>
+      <div class="t-line" style="margin-top:0.5rem"><span class="t-prompt">~$</span> <span class="t-cmd">cat interests.txt</span></div>
+      <div class="t-line t-out">Deep Learning</div>
+      <div class="t-line t-out">Computer Vision</div>
+      <div class="t-line t-out">Cybersécurité réseau</div>
+      <div class="t-line t-out">Réseaux 5G &amp; IoT</div>
+      <div class="t-line" style="margin-top:0.5rem"><span class="t-prompt">~$</span> <span class="t-cursor"></span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section id="about" class="section">
+  <p class="section-eyebrow">// 01 · about me</p>
+  <h2 class="section-title">À propos de moi</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Je suis <strong>Hamadi Saoudi</strong>, étudiant en 3ème année Génie des
+        Télécommunications à l'<strong>École Nationale d'Ingénieurs de Tunis (ENIT)</strong>.
+        Ma formation m'a donné des bases solides en traitement du signal, réseaux et systèmes
+        embarqués, que j'ai enrichies par une passion personnelle pour l'IA.
+      </p>
+      <p>
+        Ce qui me motive : utiliser le <strong>Machine Learning</strong> et le
+        <strong>Deep Learning</strong> pour résoudre des problèmes concrets — classification
+        médicale, détection d'anomalies réseau, vision par ordinateur.
+      </p>
+      <p>
+        En dehors du code, je lis des articles de recherche sur arXiv, je contribue à des
+        compétitions Kaggle, et j'explore la sécurité des systèmes télécom.
+      </p>
+    </div>
+
+    <div class="about-stats">
+      <div class="stat-card">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Années à l'ENIT</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Projets réalisés</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Langages maîtrisés</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">2</span>
+        <span class="stat-label">Compétitions Kaggle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SKILLS
+══════════════════════════════════════ -->
+<section id="skills" class="section">
+  <p class="section-eyebrow">// 02 · skills</p>
+  <h2 class="section-title">Compétences</h2>
+
+  <div class="skills-categories">
+    <div>
+      <p class="skill-category-title">Langages de programmation</p>
+      <div class="skill-tags">
+        <span class="skill-tag primary">Python</span>
+        <span class="skill-tag primary">C / C++</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">Bash / Linux</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="skill-category-title">Intelligence Artificielle &amp; Machine Learning</p>
+      <div class="skill-tags">
+        <span class="skill-tag primary">Machine Learning</span>
+        <span class="skill-tag primary">Deep Learning</span>
+        <span class="skill-tag primary">TensorFlow / Keras</span>
+        <span class="skill-tag primary">PyTorch</span>
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">OpenCV</span>
+        <span class="skill-tag">Pandas / NumPy</span>
+        <span class="skill-tag">Computer Vision</span>
+        <span class="skill-tag">NLP</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="skill-category-title">Télécommunications &amp; Réseaux</p>
+      <div class="skill-tags">
+        <span class="skill-tag secondary">Protocoles TCP/IP</span>
+        <span class="skill-tag secondary">Réseaux 4G/5G</span>
+        <span class="skill-tag secondary">IoT</span>
+        <span class="skill-tag secondary">Traitement du signal</span>
+        <span class="skill-tag secondary">Wireshark</span>
+        <span class="skill-tag secondary">Cisco Packet Tracer</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="skill-category-title">Cybersécurité &amp; Outils</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Cybersécurité</span>
+        <span class="skill-tag">Détection d'intrusions (IDS)</span>
+        <span class="skill-tag">Kali Linux</span>
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Jupyter Notebook</span>
+        <span class="skill-tag">LaTeX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PROJECTS
+══════════════════════════════════════ -->
+<section id="projects" class="section">
+  <p class="section-eyebrow">// 03 · projects</p>
+  <h2 class="section-title">Projets</h2>
+
+  <div class="projects-grid">
+
+    <!-- Projet 1 -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Classification de maladies neurodégénératives</span>
+        <span class="project-badge badge-ml">Deep Learning</span>
+      </div>
+      <p class="project-why">// Pourquoi ce projet ?</p>
+      <p class="project-desc">
+        Motivé par l'impact des diagnostics tardifs sur les patients atteints d'Alzheimer et Parkinson,
+        j'ai développé un modèle CNN capable de classifier ces maladies à partir d'IRM cérébrales.
+        Le modèle atteint <strong style="color:var(--text)">94% de précision</strong> sur le dataset
+        ADNI — comparable à des approches publiées dans des revues médicales.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Kaggle</span>
+        </div>
+        <div class="project-links">
+          <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet 2 -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Détection d'anomalies réseau par ML</span>
+        <span class="project-badge badge-sec">Cybersécurité</span>
+      </div>
+      <p class="project-why">// Pourquoi ce projet ?</p>
+      <p class="project-desc">
+        Les attaques DDoS coûtent des millions aux entreprises. J'ai conçu un système IDS basé sur
+        Random Forest et XGBoost pour identifier en temps réel des attaques sur le dataset NSL-KDD,
+        avec un taux de détection de <strong style="color:var(--text)">97.3%</strong> et moins de
+        0.5% de faux positifs.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Scikit-learn</span>
+          <span class="tech-tag">XGBoost</span>
+          <span class="tech-tag">Wireshark</span>
+        </div>
+        <div class="project-links">
+          <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet 3 -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Optimisation de couverture réseau 5G par IA</span>
+        <span class="project-badge badge-net">Télécom</span>
+      </div>
+      <p class="project-why">// Pourquoi ce projet ?</p>
+      <p class="project-desc">
+        Projet académique liant ma formation télécom à l'IA : utilisation de reinforcement learning
+        pour optimiser le placement d'antennes 5G dans un environnement urbain simulé, réduisant
+        les zones d'ombre de <strong style="color:var(--text)">38%</strong> par rapport aux méthodes
+        classiques.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">MATLAB</span>
+          <span class="tech-tag">Reinforcement Learning</span>
+          <span class="tech-tag">NumPy</span>
+        </div>
+        <div class="project-links">
+          <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet 4 -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-title">Vision par ordinateur — Détection de défauts industriels</span>
+        <span class="project-badge badge-cv">Computer Vision</span>
+      </div>
+      <p class="project-why">// Pourquoi ce projet ?</p>
+      <p class="project-desc">
+        Développement d'un pipeline de détection de défauts sur des pièces industrielles
+        (égratignures, fissures) avec YOLO v8 fine-tuné. Déployé sur Raspberry Pi 4 pour
+        une utilisation en edge computing. Précision de <strong style="color:var(--text)">91%</strong>
+        à 15 FPS en temps réel.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">YOLOv8</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Raspberry Pi</span>
+          <span class="tech-tag">Edge AI</span>
+        </div>
+        <div class="project-links">
+          <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     EDUCATION / EXPERIENCE
+══════════════════════════════════════ -->
+<section id="education" class="section">
+  <p class="section-eyebrow">// 04 · parcours</p>
+  <h2 class="section-title">Formation &amp; Expérience</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+
+    <!-- FORMATION -->
+    <div>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">Formation</p>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">2022 — Présent</p>
+            <p class="timeline-title">Cycle Ingénieur — Génie Télécom</p>
+            <p class="timeline-sub">ENIT · École Nationale d'Ingénieurs de Tunis</p>
+            <p class="timeline-desc">Spécialisation : IA appliquée aux télécommunications. Modules : Traitement du signal, Réseaux 5G, Sécurité informatique, Apprentissage automatique.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">2020 — 2022</p>
+            <p class="timeline-title">Classes Préparatoires — MP</p>
+            <p class="timeline-sub">IPEIT · Institut Préparatoire aux Études d'Ingénieurs</p>
+            <p class="timeline-desc">Mathématiques, Physique et informatique. Formation intensive pour les concours d'entrée aux grandes écoles d'ingénieurs.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">2020</p>
+            <p class="timeline-title">Baccalauréat — Sciences Techniques</p>
+            <p class="timeline-sub">Lycée Pilote de Sousse</p>
+            <p class="timeline-desc">Mention Très Bien. Major de la promotion.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">Expérience</p>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot purple"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">Été 2024 · 2 mois</p>
+            <p class="timeline-title">Stage — Data Science</p>
+            <p class="timeline-sub purple">Nom de l'entreprise · Tunis</p>
+            <p class="timeline-desc">Développement d'un modèle de classification de données télécom pour identifier des anomalies de consommation. Réduction des coûts d'analyse de 20%.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot purple"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">2023 — Présent</p>
+            <p class="timeline-title">Membre actif — Club IA &amp; Robotique</p>
+            <p class="timeline-sub purple">ENIT · Tunis</p>
+            <p class="timeline-desc">Organisation d'ateliers de formation sur Python et ML pour les étudiants de 1ère année. Participation aux hackathons nationaux.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot purple"></div>
+          <div class="timeline-body">
+            <p class="timeline-date">Été 2023 · 1 mois</p>
+            <p class="timeline-title">Stage d'observation — Réseaux</p>
+            <p class="timeline-sub purple">Tunisie Telecom · Sousse</p>
+            <p class="timeline-desc">Découverte de l'infrastructure réseau d'un opérateur télécom : fibre optique, configuration de routeurs, supervision réseau.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CERTIFICATIONS
+══════════════════════════════════════ -->
+<section class="section">
+  <p class="section-eyebrow">// 05 · certifications</p>
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="cert-grid">
+
+    <div class="cert-card">
+      <div class="cert-icon cyan">🧠</div>
+      <div>
+        <p class="cert-name">Machine Learning Specialization</p>
+        <p class="cert-issuer">Coursera · Andrew Ng · 2024</p>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon purple">🔐</div>
+      <div>
+        <p class="cert-name">Google Cybersecurity Certificate</p>
+        <p class="cert-issuer">Google · Coursera · 2024</p>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon cyan">📡</div>
+      <div>
+        <p class="cert-name">CCNA — Introduction to Networks</p>
+        <p class="cert-issuer">Cisco Networking Academy · 2023</p>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon green">🐍</div>
+      <div>
+        <p class="cert-name">Python for Data Science &amp; AI</p>
+        <p class="cert-issuer">IBM · Coursera · 2023</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONTACT
+══════════════════════════════════════ -->
+<section id="contact" class="section">
+  <p class="section-eyebrow">// 06 · contact</p>
+  <h2 class="section-title">Me contacter</h2>
+
+  <div class="contact-wrapper">
+
+    <!-- LIENS DIRECTS -->
+    <div>
+      <p class="contact-intro">
+        Ouvert à un <strong style="color:var(--text)">stage de fin d'études</strong>,
+        une <strong style="color:var(--text)">alternance</strong> ou une
+        <strong style="color:var(--text)">collaboration sur un projet IA</strong>.
+        N'hésitez pas à me contacter !
+      </p>
+      <div class="contact-links">
+
+        <a class="contact-link-item" href="mailto:votre.email@example.com">
+          <div class="contact-link-icon">✉</div>
+          <div>
+            <p class="contact-link-label">Email</p>
+            <p class="contact-link-val">votre.email@example.com</p>
+          </div>
+        </a>
+
+        <a class="contact-link-item" href="https://github.com/hammadi-saoudi" target="_blank">
+          <div class="contact-link-icon">⎔</div>
+          <div>
+            <p class="contact-link-label">GitHub</p>
+            <p class="contact-link-val">github.com/hammadi-saoudi</p>
+          </div>
+        </a>
+
+        <a class="contact-link-item" href="https://linkedin.com/in/hamadisaoudi" target="_blank">
+          <div class="contact-link-icon">◈</div>
+          <div>
+            <p class="contact-link-label">LinkedIn</p>
+            <p class="contact-link-val">linkedin.com/in/hamadisaoudi</p>
+          </div>
+        </a>
+
+        <div class="contact-link-item" style="cursor:default;">
+          <div class="contact-link-icon">◎</div>
+          <div>
+            <p class="contact-link-label">Localisation</p>
+            <p class="contact-link-val">Tunis / Sousse, Tunisie</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FORMULAIRE -->
+    <div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Nom complet</label>
+          <input type="text" placeholder="Jean Dupont" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="contact@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Sujet</label>
+          <input type="text" placeholder="Proposition de stage, Collaboration…" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Bonjour Hamadi, je voudrais…"></textarea>
+        </div>
+        <a class="btn-primary" href="mailto:votre.email@example.com" style="text-align:center;">
+          Envoyer le message
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <p>Conçu &amp; développé par <span>Hamadi Saoudi</span> · 2025 · Tunis, Tunisie</p>
+</footer>
+
 </body>
 </html>
