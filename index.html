@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamadi Saoudi — Portfolio</title>
-  <meta name="description" content="Portfolio de Hamadi Saoudi, étudiant en Génie Télécom à l'ENIT, passionné par l'IA, le Machine Learning et la Cybersécurité." />
+  <title>Hammadi Saoudi — Portfolio</title>
+  <meta name="description" content="Portfolio de Hammadi Saoudi, élève ingénieur en Télécommunications à l'ENIT, passionné par l'IA, le Deep Learning et les réseaux." />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -109,6 +109,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: opacity 0.2s;
+      display: inline-block;
     }
     .btn-primary:hover { opacity: 0.85; }
     .btn-outline {
@@ -123,6 +124,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s;
+      display: inline-block;
     }
     .btn-outline:hover { background: var(--cyan-soft); }
 
@@ -357,7 +359,7 @@
     .timeline-sub.purple { color: #B07BFF; }
     .timeline-desc { font-size: 14px; color: var(--muted); }
 
-    /* ── CERTIFICATIONS ── */
+    /* ── CERTIFICATIONS / LANGUES ── */
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
     .cert-card {
       background: var(--card2);
@@ -459,7 +461,7 @@
       .about-grid { grid-template-columns: 1fr; }
       .contact-wrapper { grid-template-columns: 1fr; }
       nav { padding: 1rem; }
-      .nav-links { gap: 1rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -486,20 +488,21 @@
 <section style="padding: 0; border: none;">
   <div class="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">// Disponible pour un stage &amp; alternance</p>
+      <p class="hero-eyebrow">// Élève ingénieur · 2ème année Télécom</p>
       <h1 class="hero-name">
-        Hamadi<br>
+        Hammadi<br>
         <span class="accent">Saoudi</span>
       </h1>
       <p class="hero-role">
-        Étudiant en 3ème année Génie Télécom à l'ENIT · Passionné par
+        Élève ingénieur en Télécommunications à l'ENIT · Passionné par
         l'<strong style="color:var(--cyan)">Intelligence Artificielle</strong>,
-        le <strong style="color:var(--cyan)">Machine Learning</strong>
-        et la <strong style="color:var(--cyan)">Cybersécurité</strong>.
+        la <strong style="color:var(--cyan)">programmation</strong>
+        et les <strong style="color:var(--cyan)">réseaux informatiques</strong>.
       </p>
       <div class="hero-btns">
         <a class="btn-primary" href="#projects">Voir mes projets</a>
-        <a class="btn-outline" href="cv-hamadi-saoudi.pdf" download>Télécharger CV</a>
+        <!-- Lien direct vers le PDF du CV : le navigateur proposera le téléchargement -->
+        <a class="btn-outline" href="cv-hamadi-saoudi.pdf" download="CV_Hammadi_Saoudi.pdf">Télécharger CV</a>
       </div>
     </div>
 
@@ -510,12 +513,12 @@
         <div class="dot dot-g"></div>
       </div>
       <div class="t-line"><span class="t-prompt">~$</span> <span class="t-cmd">whoami</span></div>
-      <div class="t-line t-out">Hamadi Saoudi — Télécom &amp; IA</div>
-      <div class="t-line" style="margin-top:0.5rem"><span class="t-prompt">~$</span> <span class="t-cmd">cat interests.txt</span></div>
-      <div class="t-line t-out">Deep Learning</div>
-      <div class="t-line t-out">Computer Vision</div>
-      <div class="t-line t-out">Cybersécurité réseau</div>
-      <div class="t-line t-out">Réseaux 5G &amp; IoT</div>
+      <div class="t-line t-out">Hammadi Saoudi — Télécom &amp; IA</div>
+      <div class="t-line" style="margin-top:0.5rem"><span class="t-prompt">~$</span> <span class="t-cmd">cat skills.txt</span></div>
+      <div class="t-line t-out">Deep Learning (CNN, ViT)</div>
+      <div class="t-line t-out">Machine Learning</div>
+      <div class="t-line t-out">Réseaux & Routage</div>
+      <div class="t-line t-out">Python · C/C++ · Java</div>
       <div class="t-line" style="margin-top:0.5rem"><span class="t-prompt">~$</span> <span class="t-cursor"></span></div>
     </div>
   </div>
@@ -532,30 +535,32 @@
   <div class="about-grid">
     <div class="about-text">
       <p>
-        Je suis <strong>Hamadi Saoudi</strong>, étudiant en 3ème année Génie des
+        Je suis <strong>Hammadi Saoudi</strong>, élève ingénieur en 2ème année
         Télécommunications à l'<strong>École Nationale d'Ingénieurs de Tunis (ENIT)</strong>.
-        Ma formation m'a donné des bases solides en traitement du signal, réseaux et systèmes
-        embarqués, que j'ai enrichies par une passion personnelle pour l'IA.
+        Intéressé par l'intelligence artificielle, la programmation et les réseaux informatiques,
+        je cherche à développer des solutions technologiques intelligentes et fiables.
       </p>
       <p>
-        Ce qui me motive : utiliser le <strong>Machine Learning</strong> et le
-        <strong>Deep Learning</strong> pour résoudre des problèmes concrets — classification
-        médicale, détection d'anomalies réseau, vision par ordinateur.
+        Motivé, rigoureux et capable de travailler en équipe, j'aime explorer le
+        <strong>Machine Learning</strong> et le <strong>Deep Learning</strong> — des
+        architectures CNN classiques jusqu'aux Vision Transformers — appliqués à des
+        problématiques concrètes comme l'imagerie médicale.
       </p>
       <p>
-        En dehors du code, je lis des articles de recherche sur arXiv, je contribue à des
-        compétitions Kaggle, et j'explore la sécurité des systèmes télécom.
+        Côté télécom, je me forme aux réseaux d'entreprise, aux protocoles de routage
+        et à l'infrastructure réseau, avec une première expérience de terrain chez
+        Pursuit Aerospace Tunisia.
       </p>
     </div>
 
     <div class="about-stats">
       <div class="stat-card">
-        <span class="stat-number">3</span>
-        <span class="stat-label">Années à l'ENIT</span>
+        <span class="stat-number">2<sup style="font-size:14px">e</sup></span>
+        <span class="stat-label">Année à l'ENIT</span>
       </div>
       <div class="stat-card">
-        <span class="stat-number">5+</span>
-        <span class="stat-label">Projets réalisés</span>
+        <span class="stat-number">3</span>
+        <span class="stat-label">Projets académiques</span>
       </div>
       <div class="stat-card">
         <span class="stat-number">4</span>
@@ -563,7 +568,7 @@
       </div>
       <div class="stat-card">
         <span class="stat-number">2</span>
-        <span class="stat-label">Compétitions Kaggle</span>
+        <span class="stat-label">Certifications Cisco</span>
       </div>
     </div>
   </div>
@@ -579,54 +584,66 @@
 
   <div class="skills-categories">
     <div>
-      <p class="skill-category-title">Langages de programmation</p>
+      <p class="skill-category-title">Programmation</p>
       <div class="skill-tags">
         <span class="skill-tag primary">Python</span>
         <span class="skill-tag primary">C / C++</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">MATLAB</span>
-        <span class="skill-tag">Bash / Linux</span>
-        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Java / JEE</span>
+        <span class="skill-tag">Développement Web</span>
       </div>
     </div>
 
     <div>
-      <p class="skill-category-title">Intelligence Artificielle &amp; Machine Learning</p>
+      <p class="skill-category-title">Machine Learning</p>
       <div class="skill-tags">
-        <span class="skill-tag primary">Machine Learning</span>
-        <span class="skill-tag primary">Deep Learning</span>
-        <span class="skill-tag primary">TensorFlow / Keras</span>
-        <span class="skill-tag primary">PyTorch</span>
-        <span class="skill-tag">Scikit-learn</span>
-        <span class="skill-tag">OpenCV</span>
-        <span class="skill-tag">Pandas / NumPy</span>
-        <span class="skill-tag">Computer Vision</span>
-        <span class="skill-tag">NLP</span>
+        <span class="skill-tag primary">Classification</span>
+        <span class="skill-tag primary">Régression</span>
+        <span class="skill-tag primary">Scikit-learn</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">Matplotlib</span>
       </div>
     </div>
 
     <div>
-      <p class="skill-category-title">Télécommunications &amp; Réseaux</p>
+      <p class="skill-category-title">Deep Learning</p>
       <div class="skill-tags">
-        <span class="skill-tag secondary">Protocoles TCP/IP</span>
-        <span class="skill-tag secondary">Réseaux 4G/5G</span>
-        <span class="skill-tag secondary">IoT</span>
-        <span class="skill-tag secondary">Traitement du signal</span>
-        <span class="skill-tag secondary">Wireshark</span>
-        <span class="skill-tag secondary">Cisco Packet Tracer</span>
+        <span class="skill-tag primary">ANN</span>
+        <span class="skill-tag primary">CNN</span>
+        <span class="skill-tag primary">ViT (Vision Transformers)</span>
+        <span class="skill-tag">Traitement d'images</span>
+        <span class="skill-tag">Explainable AI</span>
+        <span class="skill-tag">Keras</span>
+        <span class="skill-tag">PyTorch</span>
       </div>
     </div>
 
     <div>
-      <p class="skill-category-title">Cybersécurité &amp; Outils</p>
+      <p class="skill-category-title">Réseaux</p>
       <div class="skill-tags">
-        <span class="skill-tag">Cybersécurité</span>
-        <span class="skill-tag">Détection d'intrusions (IDS)</span>
-        <span class="skill-tag">Kali Linux</span>
-        <span class="skill-tag">Git / GitHub</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Jupyter Notebook</span>
-        <span class="skill-tag">LaTeX</span>
+        <span class="skill-tag secondary">Fondamentaux réseaux</span>
+        <span class="skill-tag secondary">Protocoles de routage</span>
+        <span class="skill-tag secondary">Réseaux locaux d'entreprise</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="skill-category-title">Systèmes &amp; Bases de données</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Oracle</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="skill-category-title">Soft Skills</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Travail en équipe</span>
+        <span class="skill-tag">Résolution de problèmes</span>
+        <span class="skill-tag">Communication</span>
+        <span class="skill-tag">Autonomie</span>
       </div>
     </div>
   </div>
@@ -638,55 +655,32 @@
 ══════════════════════════════════════ -->
 <section id="projects" class="section">
   <p class="section-eyebrow">// 03 · projects</p>
-  <h2 class="section-title">Projets</h2>
+  <h2 class="section-title">Projets académiques</h2>
 
   <div class="projects-grid">
 
-    <!-- Projet 1 -->
+    <!-- Projet 1 : PFA 2 -->
     <div class="project-card">
       <div class="project-header">
-        <span class="project-title">Classification de maladies neurodégénératives</span>
-        <span class="project-badge badge-ml">Deep Learning</span>
+        <span class="project-title">Diagnostic explicable de la Rétinopathie Diabétique</span>
+        <span class="project-badge badge-ml">PFA 2 · 2026</span>
       </div>
       <p class="project-why">// Pourquoi ce projet ?</p>
       <p class="project-desc">
-        Motivé par l'impact des diagnostics tardifs sur les patients atteints d'Alzheimer et Parkinson,
-        j'ai développé un modèle CNN capable de classifier ces maladies à partir d'IRM cérébrales.
-        Le modèle atteint <strong style="color:var(--text)">94% de précision</strong> sur le dataset
-        ADNI — comparable à des approches publiées dans des revues médicales.
+        Système d'aide au diagnostic basé sur un modèle hybride combinant
+        <strong style="color:var(--text)">CNN, ViT</strong> et architectures hybrides pour la
+        classification d'images rétiniennes. Intégration de techniques de prétraitement,
+        d'augmentation de données et d'<strong style="color:var(--text)">Explainable AI</strong>
+        pour rendre les prédictions interprétables par les praticiens.
       </p>
       <div class="project-footer">
         <div class="project-tech">
           <span class="tech-tag">Python</span>
           <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">Keras</span>
+          <span class="tech-tag">PyTorch</span>
           <span class="tech-tag">OpenCV</span>
-          <span class="tech-tag">Kaggle</span>
-        </div>
-        <div class="project-links">
-          <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Projet 2 -->
-    <div class="project-card">
-      <div class="project-header">
-        <span class="project-title">Détection d'anomalies réseau par ML</span>
-        <span class="project-badge badge-sec">Cybersécurité</span>
-      </div>
-      <p class="project-why">// Pourquoi ce projet ?</p>
-      <p class="project-desc">
-        Les attaques DDoS coûtent des millions aux entreprises. J'ai conçu un système IDS basé sur
-        Random Forest et XGBoost pour identifier en temps réel des attaques sur le dataset NSL-KDD,
-        avec un taux de détection de <strong style="color:var(--text)">97.3%</strong> et moins de
-        0.5% de faux positifs.
-      </p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-tag">Python</span>
           <span class="tech-tag">Scikit-learn</span>
-          <span class="tech-tag">XGBoost</span>
-          <span class="tech-tag">Wireshark</span>
         </div>
         <div class="project-links">
           <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
@@ -694,25 +688,27 @@
       </div>
     </div>
 
-    <!-- Projet 3 -->
+    <!-- Projet 2 : PFA 1 -->
     <div class="project-card">
       <div class="project-header">
-        <span class="project-title">Optimisation de couverture réseau 5G par IA</span>
-        <span class="project-badge badge-net">Télécom</span>
+        <span class="project-title">Architectures de Deep Learning pour maladies neurodégénératives</span>
+        <span class="project-badge badge-cv">PFA 1 · 2025</span>
       </div>
       <p class="project-why">// Pourquoi ce projet ?</p>
       <p class="project-desc">
-        Projet académique liant ma formation télécom à l'IA : utilisation de reinforcement learning
-        pour optimiser le placement d'antennes 5G dans un environnement urbain simulé, réduisant
-        les zones d'ombre de <strong style="color:var(--text)">38%</strong> par rapport aux méthodes
-        classiques.
+        Étude comparative de plusieurs architectures de Deep Learning appliquées à la
+        classification de maladies neurodégénératives à partir d'un dataset réel.
+        Analyse et interprétation approfondie des performances de chaque modèle pour
+        identifier l'architecture la plus pertinente.
       </p>
       <div class="project-footer">
         <div class="project-tech">
           <span class="tech-tag">Python</span>
-          <span class="tech-tag">MATLAB</span>
-          <span class="tech-tag">Reinforcement Learning</span>
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">Keras</span>
+          <span class="tech-tag">Scikit-learn</span>
           <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">Pandas</span>
         </div>
         <div class="project-links">
           <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
@@ -720,26 +716,26 @@
       </div>
     </div>
 
-    <!-- Projet 4 -->
+    <!-- Projet 3 : Vidéosurveillance -->
     <div class="project-card">
       <div class="project-header">
-        <span class="project-title">Vision par ordinateur — Détection de défauts industriels</span>
-        <span class="project-badge badge-cv">Computer Vision</span>
+        <span class="project-title">Système intelligent de vidéosurveillance</span>
+        <span class="project-badge badge-net">ENIT Semaine Systèmes · 2025</span>
       </div>
       <p class="project-why">// Pourquoi ce projet ?</p>
       <p class="project-desc">
-        Développement d'un pipeline de détection de défauts sur des pièces industrielles
-        (égratignures, fissures) avec YOLO v8 fine-tuné. Déployé sur Raspberry Pi 4 pour
-        une utilisation en edge computing. Précision de <strong style="color:var(--text)">91%</strong>
-        à 15 FPS en temps réel.
+        Conception d'un système embarqué de vidéosurveillance intelligente avec
+        <strong style="color:var(--text)">Arduino</strong> et <strong style="color:var(--text)">ArduCam</strong>,
+        capable de détecter et traiter des images en temps réel. Projet mené dans le cadre
+        de la Semaine Systèmes de l'ENIT, alliant électronique embarquée et vision par ordinateur.
       </p>
       <div class="project-footer">
         <div class="project-tech">
           <span class="tech-tag">Python</span>
-          <span class="tech-tag">YOLOv8</span>
           <span class="tech-tag">OpenCV</span>
-          <span class="tech-tag">Raspberry Pi</span>
-          <span class="tech-tag">Edge AI</span>
+          <span class="tech-tag">Arduino IDE</span>
+          <span class="tech-tag">ArduCam</span>
+          <span class="tech-tag">C/C++</span>
         </div>
         <div class="project-links">
           <a class="link-btn" href="https://github.com/hammadi-saoudi" target="_blank">GitHub →</a>
@@ -768,30 +764,30 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-body">
-            <p class="timeline-date">2022 — Présent</p>
-            <p class="timeline-title">Cycle Ingénieur — Génie Télécom</p>
+            <p class="timeline-date">09/2024 — Présent</p>
+            <p class="timeline-title">Diplôme National d'Ingénieur en Télécommunications</p>
             <p class="timeline-sub">ENIT · École Nationale d'Ingénieurs de Tunis</p>
-            <p class="timeline-desc">Spécialisation : IA appliquée aux télécommunications. Modules : Traitement du signal, Réseaux 5G, Sécurité informatique, Apprentissage automatique.</p>
+            <p class="timeline-desc">Formation d'ingénieur en télécommunications, avec une orientation personnelle vers l'intelligence artificielle appliquée.</p>
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-body">
-            <p class="timeline-date">2020 — 2022</p>
-            <p class="timeline-title">Classes Préparatoires — MP</p>
-            <p class="timeline-sub">IPEIT · Institut Préparatoire aux Études d'Ingénieurs</p>
-            <p class="timeline-desc">Mathématiques, Physique et informatique. Formation intensive pour les concours d'entrée aux grandes écoles d'ingénieurs.</p>
+            <p class="timeline-date">09/2022 — 05/2024</p>
+            <p class="timeline-title">Cycle Préparatoire — Mathématiques / Physique</p>
+            <p class="timeline-sub">IPEIEM · Institut Préparatoire aux Études d'Ingénieurs d'El Manar</p>
+            <p class="timeline-desc">Préparation intensive aux concours nationaux d'entrée aux écoles d'ingénieurs en mathématiques et physique.</p>
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-body">
-            <p class="timeline-date">2020</p>
-            <p class="timeline-title">Baccalauréat — Sciences Techniques</p>
-            <p class="timeline-sub">Lycée Pilote de Sousse</p>
-            <p class="timeline-desc">Mention Très Bien. Major de la promotion.</p>
+            <p class="timeline-date">2022</p>
+            <p class="timeline-title">Baccalauréat — Mathématiques</p>
+            <p class="timeline-sub">Mention Bien</p>
+            <p class="timeline-desc">Section Mathématiques, mention Bien.</p>
           </div>
         </div>
 
@@ -800,36 +796,16 @@
 
     <!-- EXPERIENCE -->
     <div>
-      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">Expérience</p>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">Expérience professionnelle</p>
       <div class="timeline">
 
         <div class="timeline-item">
           <div class="timeline-dot purple"></div>
           <div class="timeline-body">
-            <p class="timeline-date">Été 2024 · 2 mois</p>
-            <p class="timeline-title">Stage — Data Science</p>
-            <p class="timeline-sub purple">Nom de l'entreprise · Tunis</p>
-            <p class="timeline-desc">Développement d'un modèle de classification de données télécom pour identifier des anomalies de consommation. Réduction des coûts d'analyse de 20%.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot purple"></div>
-          <div class="timeline-body">
-            <p class="timeline-date">2023 — Présent</p>
-            <p class="timeline-title">Membre actif — Club IA &amp; Robotique</p>
-            <p class="timeline-sub purple">ENIT · Tunis</p>
-            <p class="timeline-desc">Organisation d'ateliers de formation sur Python et ML pour les étudiants de 1ère année. Participation aux hackathons nationaux.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot purple"></div>
-          <div class="timeline-body">
-            <p class="timeline-date">Été 2023 · 1 mois</p>
-            <p class="timeline-title">Stage d'observation — Réseaux</p>
-            <p class="timeline-sub purple">Tunisie Telecom · Sousse</p>
-            <p class="timeline-desc">Découverte de l'infrastructure réseau d'un opérateur télécom : fibre optique, configuration de routeurs, supervision réseau.</p>
+            <p class="timeline-date">08/2025</p>
+            <p class="timeline-title">Stage ouvrier</p>
+            <p class="timeline-sub purple">Pursuit Aerospace Tunisia</p>
+            <p class="timeline-desc">Analyse de l'infrastructure informatique et réseau de l'entreprise. Participation à des projets d'amélioration continue des processus.</p>
           </div>
         </div>
 
@@ -840,43 +816,43 @@
 
 
 <!-- ══════════════════════════════════════
-     CERTIFICATIONS
+     CERTIFICATIONS & LANGUES
 ══════════════════════════════════════ -->
 <section class="section">
-  <p class="section-eyebrow">// 05 · certifications</p>
-  <h2 class="section-title">Certifications</h2>
+  <p class="section-eyebrow">// 05 · certifications &amp; langues</p>
+  <h2 class="section-title">Certifications &amp; Langues</h2>
 
   <div class="cert-grid">
 
     <div class="cert-card">
-      <div class="cert-icon cyan">🧠</div>
-      <div>
-        <p class="cert-name">Machine Learning Specialization</p>
-        <p class="cert-issuer">Coursera · Andrew Ng · 2024</p>
-      </div>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-icon purple">🔐</div>
-      <div>
-        <p class="cert-name">Google Cybersecurity Certificate</p>
-        <p class="cert-issuer">Google · Coursera · 2024</p>
-      </div>
-    </div>
-
-    <div class="cert-card">
       <div class="cert-icon cyan">📡</div>
       <div>
-        <p class="cert-name">CCNA — Introduction to Networks</p>
-        <p class="cert-issuer">Cisco Networking Academy · 2023</p>
+        <p class="cert-name">CCNA 1 : Introduction to Networks</p>
+        <p class="cert-issuer">Cisco Networking Academy</p>
       </div>
     </div>
 
     <div class="cert-card">
-      <div class="cert-icon green">🐍</div>
+      <div class="cert-icon purple">🔀</div>
       <div>
-        <p class="cert-name">Python for Data Science &amp; AI</p>
-        <p class="cert-issuer">IBM · Coursera · 2023</p>
+        <p class="cert-name">CCNA 2 : Switching, Routing</p>
+        <p class="cert-issuer">Cisco Networking Academy</p>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon green">🇫🇷</div>
+      <div>
+        <p class="cert-name">Français — Niveau B2</p>
+        <p class="cert-issuer">Compréhension et expression courantes</p>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon green">🇬🇧</div>
+      <div>
+        <p class="cert-name">Anglais — Niveau B2</p>
+        <p class="cert-issuer">Compréhension et expression courantes</p>
       </div>
     </div>
 
@@ -896,18 +872,33 @@
     <!-- LIENS DIRECTS -->
     <div>
       <p class="contact-intro">
-        Ouvert à un <strong style="color:var(--text)">stage de fin d'études</strong>,
-        une <strong style="color:var(--text)">alternance</strong> ou une
-        <strong style="color:var(--text)">collaboration sur un projet IA</strong>.
-        N'hésitez pas à me contacter !
+        Ouvert à un <strong style="color:var(--text)">stage</strong>, une
+        <strong style="color:var(--text)">collaboration sur un projet IA</strong> ou simplement
+        à échanger sur l'intelligence artificielle et les réseaux. N'hésitez pas à me contacter !
       </p>
       <div class="contact-links">
 
-        <a class="contact-link-item" href="mailto:votre.email@example.com">
+        <a class="contact-link-item" href="mailto:Hammadi.saoudi@etudiant-enit.utm.tn">
           <div class="contact-link-icon">✉</div>
           <div>
             <p class="contact-link-label">Email</p>
-            <p class="contact-link-val">votre.email@example.com</p>
+            <p class="contact-link-val">Hammadi.saoudi@etudiant-enit.utm.tn</p>
+          </div>
+        </a>
+
+        <a class="contact-link-item" href="tel:+21653995330">
+          <div class="contact-link-icon">📞</div>
+          <div>
+            <p class="contact-link-label">Téléphone</p>
+            <p class="contact-link-val">53 995 330</p>
+          </div>
+        </a>
+
+        <a class="contact-link-item" href="https://linkedin.com/in/hammadi-saoudi-14154338a" target="_blank">
+          <div class="contact-link-icon">◈</div>
+          <div>
+            <p class="contact-link-label">LinkedIn</p>
+            <p class="contact-link-val">linkedin.com/in/hammadi-saoudi-14154338a</p>
           </div>
         </a>
 
@@ -918,22 +909,6 @@
             <p class="contact-link-val">github.com/hammadi-saoudi</p>
           </div>
         </a>
-
-        <a class="contact-link-item" href="https://linkedin.com/in/hamadisaoudi" target="_blank">
-          <div class="contact-link-icon">◈</div>
-          <div>
-            <p class="contact-link-label">LinkedIn</p>
-            <p class="contact-link-val">linkedin.com/in/hamadisaoudi</p>
-          </div>
-        </a>
-
-        <div class="contact-link-item" style="cursor:default;">
-          <div class="contact-link-icon">◎</div>
-          <div>
-            <p class="contact-link-label">Localisation</p>
-            <p class="contact-link-val">Tunis / Sousse, Tunisie</p>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -955,9 +930,9 @@
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="Bonjour Hamadi, je voudrais…"></textarea>
+          <textarea placeholder="Bonjour Hammadi, je voudrais…"></textarea>
         </div>
-        <a class="btn-primary" href="mailto:votre.email@example.com" style="text-align:center;">
+        <a class="btn-primary" href="mailto:Hammadi.saoudi@etudiant-enit.utm.tn" style="text-align:center;">
           Envoyer le message
         </a>
       </div>
@@ -970,7 +945,7 @@
      FOOTER
 ══════════════════════════════════════ -->
 <footer>
-  <p>Conçu &amp; développé par <span>Hamadi Saoudi</span> · 2025 · Tunis, Tunisie</p>
+  <p>Conçu &amp; développé par <span>Hammadi Saoudi</span> · 2025 · Tunis, Tunisie</p>
 </footer>
 
 </body>
