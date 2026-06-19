@@ -97,6 +97,15 @@
       max-width: 480px;
     }
     .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .hero-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--cyan);
+      box-shadow: 0 0 30px rgba(0,212,255,0.25);
+      margin-bottom: 1.5rem;
+    }
     .btn-primary {
       background: var(--cyan);
       color: #0A0F1E;
@@ -488,6 +497,7 @@
 <section style="padding: 0; border: none;">
   <div class="hero">
     <div class="hero-left">
+      <img src="photo.jpg" alt="Hammadi Saoudi" class="hero-photo" />
       <p class="hero-eyebrow">// Élève ingénieur · 2ème année Télécom</p>
       <h1 class="hero-name">
         Hammadi<br>
@@ -502,7 +512,7 @@
       <div class="hero-btns">
         <a class="btn-primary" href="#projects">Voir mes projets</a>
         <!-- Lien direct vers le PDF du CV : le navigateur proposera le téléchargement -->
-        <a class="btn-outline" href="CV_Hammadi_Saoudi.pdf" download="CV_Hammadi_Saoudi.pdf">Télécharger CV</a>
+        <a class="btn-outline" href="cv-hamadi-saoudi.pdf" download="CV_Hammadi_Saoudi.pdf">Télécharger CV</a>
       </div>
     </div>
 
